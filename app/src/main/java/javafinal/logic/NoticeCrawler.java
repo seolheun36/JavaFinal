@@ -17,6 +17,9 @@ import java.io.IOException;
  * @changelog
  *            <ul>
  *            <li>2024-11-12: 최초 생성</li>
+ *            <li>2024-11-12: 결행 공지사항 내용 추출기능 추가</li>
+ *            <li>2024-11-12: 결행 게시물 제목 및 내용 추출기능 업데이트</li>
+ *            <li>2024-11-12: 추출한 데이터를 이차원 배열에 저장하는 기능 추가</li>
  *            </ul>
  */
 public class NoticeCrawler {
@@ -29,22 +32,40 @@ public class NoticeCrawler {
      */
     NoticeCrawler() {
         String noticeListURL = homepage + "selectBbsNttList.do?key=4577&bbsNo=881&searchCnd=SJ&searchKrwd=결행";
+
         try {
             Document doc = Jsoup.connect(noticeListURL).get();
-            Elements noticeTBody = doc.select(".tb");
-            Elements noticeTRs = noticeTBody.select("tr");
+            Elements noticeTBodys = doc.select(".tb");
+            Elements noticeTRs = noticeTBodys.select("tr");
 
-            for (Element noticeTR : noticeTRs) {
-                String infoNum = noticeTR.select(".web_block").first().text();
+            Elements firstFiveNoticeTRs;
+            if (noticeTRs.get(0).text().contains("[공지]")) {
+                firstFiveNoticeTRs = new Elements(noticeTRs.subList(1, 6));
+            } else {
+                firstFiveNoticeTRs = new Elements(noticeTRs.subList(0, 5));
+            }
 
-                if (!infoNum.contains("[공지]")) {
-                    Elements noticeSubjectss = noticeTR.select(".subject");
-                    
-                    String noticeSubject = noticeSubjectss.text();
-                    String noticeContent = contentsCrawler(noticeSubjectss);
+            String[][] data = new String[5][2];
 
-                    System.out.println(noticeSubject + "\n\n" + noticeContent);
+            int i = 0;
+            for (Element noticeTR : firstFiveNoticeTRs) {
+                Elements noticeSubjects = noticeTR.select(".subject");
+
+                String noticeSubject = noticeSubjects.text();
+                String notice = contentsCrawler(noticeSubjects);
+
+                String[] noticeLine = { noticeSubject, notice };
+                data[i] = noticeLine;
+
+                i++;
+            }
+
+            // 공지 내용 5개를 저장한 이차원 배열 data 출력
+            for (String[] row : data) {
+                for (String num : row) {
+                    System.out.print(num + "\n\n");
                 }
+                System.out.println();
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -56,7 +77,8 @@ public class NoticeCrawler {
      * 
      * @author seolheun5
      * 
-     * @param infoSubjects 각 공지 내용 중 {@code class="subject"}인 요소를 담은 {@code Elements} 타입 자료
+     * @param infoSubjects 각 공지 내용 중 {@code class="subject"}인 요소를 담은
+     *                     {@code Elements} 타입 자료
      */
     private String contentsCrawler(Elements noticeSubjects) {
         Elements noticeLinks = noticeSubjects.select("a");
@@ -84,7 +106,7 @@ public class NoticeCrawler {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        
+
         return notice;
     }
 
