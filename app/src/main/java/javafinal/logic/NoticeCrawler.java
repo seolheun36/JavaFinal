@@ -26,22 +26,15 @@ public class NoticeCrawler {
     private String homepage = "https://www.cju.ac.kr/www/";
 
     /**
-     * {@code NoticeCrawler} 생성자
-     * 
-     * @author seolheun5
-     */
-    NoticeCrawler() {
-        noticeListCrawler();
-    }
-
-    /**
      * {@code noticeListCrawler} 메서드는 셔틀 결행 공지사항 리스트를 순회하며 리스트 기본 정보를 크롤링하는 메서드입니다.
      * 
      * @author seolheun5
      */
-    private void noticeListCrawler() {
+    public String[][] noticeListCrawler() {
         // 공지사항 사이트에서 '결행'을 검색했을 때 homepage url 이후 url과 homepage url을 합치는 코드
         String noticeListURL = homepage + "selectBbsNttList.do?key=4577&bbsNo=881&searchCnd=SJ&searchKrwd=결행";
+
+        String[][] data = new String[5][2];
 
         try {
             Document doc = Jsoup.connect(noticeListURL).get();
@@ -56,8 +49,6 @@ public class NoticeCrawler {
                 firstFiveNoticeTRs = new Elements(noticeTRs.subList(0, 5));
             }
 
-            String[][] data = new String[5][2];
-
             // 공지사항 각 내용을 순회하면서 각 내용을 추출하고 data라는 매트릭스에 저장하는 코드
             int i = 0;
             for (Element noticeTR : firstFiveNoticeTRs) {
@@ -71,17 +62,11 @@ public class NoticeCrawler {
 
                 i++;
             }
-
-            // 공지 내용 5개를 저장한 이차원 배열 data 출력 (임시 테스트 코드)
-            for (String[] row : data) {
-                for (String num : row) {
-                    System.out.print(num + "\n\n");
-                }
-                System.out.println();
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        return data;
     }
 
     /**
@@ -123,9 +108,5 @@ public class NoticeCrawler {
         }
 
         return notice;
-    }
-
-    public static void main(String[] args) {
-        new NoticeCrawler();
     }
 }
