@@ -1,5 +1,7 @@
 package javafinal;
 
+import javafinal.ui.CJUShuttlePlusFrame;
+
 /**
  * {@code Main} 클래스
  * 
@@ -23,6 +25,6 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        
+        new CJUShuttlePlusFrame();
     }
 }
