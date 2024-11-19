@@ -6,6 +6,8 @@ import javafinal.utils.Constants;
 import java.awt.*;
 import javax.swing.*;
 
+import org.xml.sax.SAXException;
+
 /**
  * {@code CJUShuttlePlusNoticePanel} 클래스는 셔틀 결행 공지 부분 패널에 대한 설정 클래스입니다.
  * 
@@ -23,7 +25,7 @@ import javax.swing.*;
  */
 public class CJUShuttlePlusNoticePanel extends JPanel {
     private JPanel titlePanel;
-    private JPanel noticeListPanel;
+    private JScrollPane noticeScrollPane;
 
     /**
      * {@code CJUShuttlePlusNoticePanel} 패널의 생성자로 패널의 큰 틀을 설정한다.
@@ -49,7 +51,7 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
         gbc.weightx = 1;
         gbc.weighty = 0.9;
         gbc.gridy = 1;
-        mainPanel.add(noticeListPanel, gbc);
+        mainPanel.add(noticeScrollPane, gbc);
 
         add(mainPanel);
     }
@@ -74,10 +76,16 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
      * {@code createNoticePanel} 메서드는 공지 내용인 Notice Panel을 설정하고 추가하는 메서드입니다.
      * 
      * @author seolheun5
+     * 
+     * @see <a href="https://heaven0713.tistory.com/28">JLabel 개행 처리 참고</a>
      */
     private void createNoticePanel() {
-        noticeListPanel = new JPanel(new GridLayout(0, 1, 10, 10));
+        JPanel noticeListPanel = new JPanel(new GridLayout(0, 1, 10, 10));
         noticeListPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        noticeScrollPane = new JScrollPane(noticeListPanel);
+        noticeScrollPane.setHorizontalScrollBar(null);
+        noticeScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         NoticeCrawler nc = new NoticeCrawler();
         String[][] notices = nc.noticeListCrawler();
@@ -91,7 +99,8 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
             JLabel noticeTitle = new JLabel(notice[0]);
             noticePanel.add(noticeTitle);
 
-            JLabel noticeContents = new JLabel(notice[1]);
+            String htmlContent = "<html>" + notice[1] + "</html>";
+            JLabel noticeContents = new JLabel(htmlContent);
             noticePanel.add(noticeContents);
 
             noticeBorderPanel.add(noticePanel);
