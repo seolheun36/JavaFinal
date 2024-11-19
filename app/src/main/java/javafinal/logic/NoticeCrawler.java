@@ -4,7 +4,11 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+
 import java.io.IOException;
+
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  * {@code NoticeCrawler} 클래스
@@ -21,6 +25,7 @@ import java.io.IOException;
  *            <li>2024-11-12: 결행 게시물 제목 및 내용 추출기능 업데이트</li>
  *            <li>2024-11-12: 추출한 데이터를 이차원 배열에 저장하는 기능 추가</li>
  *            <li>2024-11-19: noticeNum이 '[공지]'인 게시물이 두 개 이상일 때 예외처리</li>
+ *            <li>2024-11-19: 이차원 배열 data를 Map으로 변경</li>
  *            </ul>
  */
 public class NoticeCrawler {
@@ -31,11 +36,12 @@ public class NoticeCrawler {
      * 
      * @author seolheun5
      */
-    public String[][] noticeListCrawler() {
+    public Map<Integer, String[]> noticeListCrawler() {
         // 공지사항 사이트에서 '결행'을 검색했을 때 homepage url 이후 url과 homepage url을 합치는 코드
         String noticeListURL = homepage + "selectBbsNttList.do?key=4577&bbsNo=881&searchCnd=SJ&searchKrwd=결행";
 
-        String[][] data = new String[5][2];
+        // TODO: 이차원 리스트인 data를 Map + Array 형태로 수정
+        Map<Integer, String[]> noticeData = new HashMap<>();
 
         try {
             Document doc = Jsoup.connect(noticeListURL).get();
@@ -60,7 +66,7 @@ public class NoticeCrawler {
                 String notice = contentsCrawler(noticeSubjects);
 
                 String[] noticeLine = { noticeSubject, notice };
-                data[i] = noticeLine;
+                noticeData.put(i, noticeLine);
 
                 i++;
             }
@@ -68,7 +74,7 @@ public class NoticeCrawler {
             e.printStackTrace();
         }
 
-        return data;
+        return noticeData;
     }
 
     /**
@@ -102,7 +108,7 @@ public class NoticeCrawler {
                 for (Element contentText : contentTexts) {
                     bld.append(contentText.wholeText());
                 }
-                bld.append("\n");
+                bld.append("<br>");
             }
             notice = bld.toString();
         } catch (IOException e) {

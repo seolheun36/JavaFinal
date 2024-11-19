@@ -4,9 +4,9 @@ import javafinal.logic.NoticeCrawler;
 import javafinal.utils.Constants;
 
 import java.awt.*;
-import javax.swing.*;
+import java.util.Map;
 
-import org.xml.sax.SAXException;
+import javax.swing.*;
 
 /**
  * {@code CJUShuttlePlusNoticePanel} 클래스는 셔틀 결행 공지 부분 패널에 대한 설정 클래스입니다.
@@ -21,6 +21,7 @@ import org.xml.sax.SAXException;
  * <li>2024-11-13: 최초 생성</li>
  * <li>2024-11-13: 결행 공지 제목 및 내용 생성</li>
  * <li>2024-11-19: 결행 공지 패널 공지 부분 공지 제목 및 내용 추가</li>
+ * <li>2024-11-19: nc 객체의 return 타입 변경에 따른 코드 수정</li>
  * </ul>
  */
 public class CJUShuttlePlusNoticePanel extends JPanel {
@@ -88,8 +89,10 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
         noticeScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         NoticeCrawler nc = new NoticeCrawler();
-        String[][] notices = nc.noticeListCrawler();
-        for (String[] notice : notices) {
+        Map<Integer, String[]> notices = nc.noticeListCrawler();
+        for (int i = 0; i < notices.size(); i++) {
+            String[] notice = notices.get(i);
+
             JPanel noticeBorderPanel = new JPanel();
             noticeBorderPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 
