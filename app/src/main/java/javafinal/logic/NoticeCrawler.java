@@ -20,6 +20,7 @@ import java.io.IOException;
  *            <li>2024-11-12: 결행 공지사항 내용 추출기능 추가</li>
  *            <li>2024-11-12: 결행 게시물 제목 및 내용 추출기능 업데이트</li>
  *            <li>2024-11-12: 추출한 데이터를 이차원 배열에 저장하는 기능 추가</li>
+ *            <li>2024-11-19: noticeNum이 '[공지]'인 게시물이 두 개 이상일 때 예외처리</li>
  *            </ul>
  */
 public class NoticeCrawler {
@@ -43,11 +44,12 @@ public class NoticeCrawler {
 
             // 공지 번호가 '[공지]'로 되어 있는 공지는 셔틀버스 결행과는 관련 없는 공지이므로 이를 예외처리하는 코드
             Elements firstFiveNoticeTRs;
-            if (noticeTRs.get(0).text().contains("[공지]")) {
-                firstFiveNoticeTRs = new Elements(noticeTRs.subList(1, 6));
-            } else {
-                firstFiveNoticeTRs = new Elements(noticeTRs.subList(0, 5));
+            int startIdx = 0;
+            for (int i = 0; noticeTRs.get(i).text().contains("[공지]"); i++) {
+                startIdx = i;
             }
+            startIdx += 1;
+            firstFiveNoticeTRs = new Elements(noticeTRs.subList(startIdx, startIdx + 5));
 
             // 공지사항 각 내용을 순회하면서 각 내용을 추출하고 data라는 매트릭스에 저장하는 코드
             int i = 0;
