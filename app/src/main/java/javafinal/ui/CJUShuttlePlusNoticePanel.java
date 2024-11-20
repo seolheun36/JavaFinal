@@ -47,12 +47,12 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
         createNoticePanel();
 
         gbc.weightx = 1;
-        gbc.weighty = 0.1;
+        gbc.weighty = 0.05;
         gbc.gridy = 0;
         mainPanel.add(titlePanel, gbc);
 
         gbc.weightx = 1;
-        gbc.weighty = 0.9;
+        gbc.weighty = 0.95;
         gbc.gridy = 1;
         mainPanel.add(noticeScrollPane, gbc);
 
