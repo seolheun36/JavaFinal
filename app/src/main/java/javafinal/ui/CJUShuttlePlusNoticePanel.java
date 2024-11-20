@@ -106,6 +106,8 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
 
             // 공지 제목 생성 및 설정
             JLabel noticeTitle = new JLabel(notice[0]);
+            noticeTitle.setFont(new Font(Constants.FONT, Font.BOLD, 15));
+            noticeTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 5));
 
             gbc.weightx = 1;
             gbc.weighty = 0.2;
@@ -115,6 +117,7 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
             // 공지 내용 생성 및 설정
             String htmlContent = "<html>" + notice[1] + "</html>";
             JLabel noticeContents = new JLabel(htmlContent);
+            noticeContents.setFont(new Font(Constants.FONT, Font.PLAIN, 13));
             gbc.weightx = 1;
             gbc.weighty = 0.8;
             gbc.gridy = 1;
