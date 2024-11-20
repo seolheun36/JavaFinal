@@ -40,7 +40,6 @@ public class NoticeCrawler {
         // 공지사항 사이트에서 '결행'을 검색했을 때 homepage url 이후 url과 homepage url을 합치는 코드
         String noticeListURL = homepage + "selectBbsNttList.do?key=4577&bbsNo=881&searchCnd=SJ&searchKrwd=결행";
 
-        // TODO: 이차원 리스트인 data를 Map + Array 형태로 수정
         Map<Integer, String[]> noticeData = new HashMap<>();
 
         try {

@@ -7,6 +7,7 @@ import java.awt.*;
 import java.util.Map;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 
 /**
  * {@code CJUShuttlePlusNoticePanel} 클래스는 셔틀 결행 공지 부분 패널에 대한 설정 클래스입니다.
@@ -22,6 +23,7 @@ import javax.swing.*;
  * <li>2024-11-13: 결행 공지 제목 및 내용 생성</li>
  * <li>2024-11-19: 결행 공지 패널 공지 부분 공지 제목 및 내용 추가</li>
  * <li>2024-11-19: nc 객체의 return 타입 변경에 따른 코드 수정</li>
+ * <li>2024-11-20: 셔틀 결행 공지 내용 부분 레이아웃 변경</li>
  * </ul>
  */
 public class CJUShuttlePlusNoticePanel extends JPanel {
@@ -96,15 +98,27 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
             JPanel noticeBorderPanel = new JPanel();
             noticeBorderPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 
-            JPanel noticePanel = new JPanel(new GridLayout(0, 1));
+            JPanel noticePanel = new JPanel(new GridBagLayout());
             noticePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-            JLabel noticeTitle = new JLabel(notice[0]);
-            noticePanel.add(noticeTitle);
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.fill = GridBagConstraints.BOTH;
 
+            // 공지 제목 생성 및 설정
+            JLabel noticeTitle = new JLabel(notice[0]);
+
+            gbc.weightx = 1;
+            gbc.weighty = 0.2;
+            gbc.gridy = 0;
+            noticePanel.add(noticeTitle, gbc);
+
+            // 공지 내용 생성 및 설정
             String htmlContent = "<html>" + notice[1] + "</html>";
             JLabel noticeContents = new JLabel(htmlContent);
-            noticePanel.add(noticeContents);
+            gbc.weightx = 1;
+            gbc.weighty = 0.8;
+            gbc.gridy = 1;
+            noticePanel.add(noticeContents, gbc);
 
             noticeBorderPanel.add(noticePanel);
             noticeListPanel.add(noticeBorderPanel);
