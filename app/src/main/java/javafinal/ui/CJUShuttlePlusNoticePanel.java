@@ -4,10 +4,11 @@ import javafinal.logic.NoticeCrawler;
 import javafinal.utils.Constants;
 
 import java.awt.*;
+import java.awt.event.AdjustmentListener;
 import java.util.Map;
+import java.util.TimerTask;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 
 /**
  * {@code CJUShuttlePlusNoticePanel} 클래스는 셔틀 결행 공지 부분 패널에 대한 설정 클래스입니다.
@@ -24,6 +25,7 @@ import javax.swing.border.Border;
  * <li>2024-11-19: 결행 공지 패널 공지 부분 공지 제목 및 내용 추가</li>
  * <li>2024-11-19: nc 객체의 return 타입 변경에 따른 코드 수정</li>
  * <li>2024-11-20: 셔틀 결행 공지 내용 부분 레이아웃 변경</li>
+ * <li>2024-11-21: 셔틀 결행 공지 내용 JLabel 자동 줄바꿈 설정</li>
  * </ul>
  */
 public class CJUShuttlePlusNoticePanel extends JPanel {
@@ -81,6 +83,8 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
      * @author seolheun5
      * 
      * @see <a href="https://heaven0713.tistory.com/28">JLabel 개행 처리 참고</a>
+     * @see <a href="https://www.php.cn/ko/faq/1796691556.html">JLabel 자동 줄바꿈 참고1</a>
+     * @see <a href="https://chat.openai.com">JLabel 자동 줄바꿈 참고2</a>
      */
     private void createNoticePanel() {
         JPanel noticeListPanel = new JPanel(new GridLayout(0, 1, 10, 10));
@@ -106,7 +110,7 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
 
             // 공지 제목 생성 및 설정
             JLabel noticeTitle = new JLabel(notice[0]);
-            noticeTitle.setFont(new Font(Constants.FONT, Font.BOLD, 15));
+            noticeTitle.setFont(new Font(Constants.FONT, Font.BOLD, 14));
             noticeTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 5));
 
             gbc.weightx = 1;
@@ -115,7 +119,7 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
             noticePanel.add(noticeTitle, gbc);
 
             // 공지 내용 생성 및 설정
-            String htmlContent = "<html>" + notice[1] + "</html>";
+            String htmlContent = "<html><style>div { width: 250px; word-wrap: break-word; white-space: normal; }</style><div>" + notice[1] + "</div></html>";
             JLabel noticeContents = new JLabel(htmlContent);
             noticeContents.setFont(new Font(Constants.FONT, Font.PLAIN, 13));
             gbc.weightx = 1;
