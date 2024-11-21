@@ -2,11 +2,10 @@ package javafinal.ui;
 
 import javafinal.logic.NoticeCrawler;
 import javafinal.utils.Constants;
+import javafinal.utils.CustomScrollBarUI;
 
 import java.awt.*;
-import java.awt.event.AdjustmentListener;
 import java.util.Map;
-import java.util.TimerTask;
 
 import javax.swing.*;
 
@@ -26,6 +25,7 @@ import javax.swing.*;
  * <li>2024-11-19: nc 객체의 return 타입 변경에 따른 코드 수정</li>
  * <li>2024-11-20: 셔틀 결행 공지 내용 부분 레이아웃 변경</li>
  * <li>2024-11-21: 셔틀 결행 공지 내용 JLabel 자동 줄바꿈 설정</li>
+ * <li>2024-11-21: 스크롤바 디자인 적용</li>
  * </ul>
  */
 public class CJUShuttlePlusNoticePanel extends JPanel {
@@ -68,7 +68,6 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
      */
     private void createTitlePanel() {
         titlePanel = new JPanel(new BorderLayout());
-        titlePanel.setBorder(BorderFactory.createLineBorder(Color.black));
 
         JLabel titleLabel = new JLabel(Constants.NOTICE_TITLE, SwingConstants.LEFT);
         titleLabel.setFont(new Font(Constants.FONT, Font.PLAIN, 20));
@@ -88,11 +87,16 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
      */
     private void createNoticePanel() {
         JPanel noticeListPanel = new JPanel(new GridLayout(0, 1, 10, 10));
-        noticeListPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        noticeListPanel.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5));
 
         noticeScrollPane = new JScrollPane(noticeListPanel);
+        noticeScrollPane.setBorder(null);
         noticeScrollPane.setHorizontalScrollBar(null);
         noticeScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+
+        JScrollBar noticeScrollBar = noticeScrollPane.getVerticalScrollBar();
+        noticeScrollBar.setUI(new CustomScrollBarUI());
+        noticeScrollBar.setUnitIncrement(15);
 
         NoticeCrawler nc = new NoticeCrawler();
         Map<Integer, String[]> notices = nc.noticeListCrawler();
