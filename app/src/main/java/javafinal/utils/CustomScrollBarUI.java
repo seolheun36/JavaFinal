@@ -19,6 +19,7 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
  * <li>2024-11-21: 최초 생성</li>
  * <li>2024-11-21: 스크롤바 버튼 삭제</li>
  * <li>2024-11-21: 스크롤바 디자인 및 색상 변경</li>
+ * <li>2024-11-21: 스크롤바 트랙 디자인 변경</li>
  * </ul>
  */
 public class CustomScrollBarUI extends BasicScrollBarUI {
@@ -55,5 +56,24 @@ public class CustomScrollBarUI extends BasicScrollBarUI {
         } else {
             return new Dimension(super.getPreferredSize(c).width, 10);
         }
+    }
+
+    // 스크롤바 트랙 설정
+    @Override
+    protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
+        g.setColor(Color.lightGray);
+        g.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);
+    }
+
+    @Override
+    protected Rectangle getTrackBounds() {
+        Rectangle trackBounds = super.getTrackBounds();
+        // 트랙 높이 및 너비를 직접 수정하여 크기 변경
+        if (scrollbar.getOrientation() == Adjustable.VERTICAL) {
+            trackBounds.width = 12;
+        } else {
+            trackBounds.height = 12;
+        }
+        return trackBounds;
     }
 }
