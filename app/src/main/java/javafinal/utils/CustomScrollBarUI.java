@@ -45,7 +45,7 @@ public class CustomScrollBarUI extends BasicScrollBarUI {
     // 스크롤바 설정
     @Override
     protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
-        g.setColor(new Color(0x396ac3));
+        g.setColor(Color.lightGray);
         g.fillRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height, 10, 10);
     }
 
@@ -61,7 +61,7 @@ public class CustomScrollBarUI extends BasicScrollBarUI {
     // 스크롤바 트랙 설정
     @Override
     protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
-        g.setColor(Color.lightGray);
+        g.setColor(Constants.CLEAR_COLOR);
         g.fillRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height);
     }
 
