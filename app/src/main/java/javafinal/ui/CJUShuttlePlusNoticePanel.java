@@ -68,9 +68,11 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
      */
     private void createTitlePanel() {
         titlePanel = new JPanel(new BorderLayout());
+        titlePanel.setBackground(Constants.CJU_MAIN_BLUE);
 
         JLabel titleLabel = new JLabel(Constants.NOTICE_TITLE, SwingConstants.LEFT);
-        titleLabel.setFont(new Font(Constants.FONT, Font.PLAIN, 20));
+        titleLabel.setForeground(Color.white);
+        titleLabel.setFont(new Font(Constants.FONT, Font.BOLD, 20));
         titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 15, 0, 15));
 
         titlePanel.add(titleLabel, BorderLayout.WEST);
