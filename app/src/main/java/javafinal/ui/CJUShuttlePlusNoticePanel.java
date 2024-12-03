@@ -16,7 +16,7 @@ import javax.swing.*;
  * @author seolheun5 (김은성, piberius5@gmail.com)
  * 
  * @create 2024-11-13
- * @lastModified 2024-11-19
+ * @lastModified 2024-12-03
  * 
  * @changelog
  * <ul>
@@ -27,6 +27,7 @@ import javax.swing.*;
  * <li>2024-11-20: 셔틀 결행 공지 내용 부분 레이아웃 변경</li>
  * <li>2024-11-21: 셔틀 결행 공지 내용 JLabel 자동 줄바꿈 설정</li>
  * <li>2024-11-21: 스크롤바 디자인 적용</li>
+ * <li>2024-12-03: 타이틀 및 내용, 내용 패널에서의 타이틀과 내용, 각 내용 패널 사이의 레이아웃 수정</li>
  * </ul>
  */
 public class CJUShuttlePlusNoticePanel extends JPanel {
@@ -41,23 +42,13 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
     protected CJUShuttlePlusNoticePanel() {
         setLayout(new BorderLayout());
 
-        JPanel mainPanel = new JPanel(new GridBagLayout());
-
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.fill = GridBagConstraints.BOTH;
+        JPanel mainPanel = new JPanel(new BorderLayout());
         
         createTitlePanel();
         createNoticePanel();
 
-        gbc.weightx = 1;
-        gbc.weighty = 0.05;
-        gbc.gridy = 0;
-        mainPanel.add(titlePanel, gbc);
-
-        gbc.weightx = 1;
-        gbc.weighty = 0.95;
-        gbc.gridy = 1;
-        mainPanel.add(noticeScrollPane, gbc);
+        mainPanel.add(titlePanel, BorderLayout.NORTH);
+        mainPanel.add(noticeScrollPane, BorderLayout.CENTER);
 
         add(mainPanel);
     }
@@ -69,6 +60,7 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
      */
     private void createTitlePanel() {
         titlePanel = new JPanel(new BorderLayout());
+        titlePanel.setBorder(BorderFactory.createEmptyBorder(15, 0, 15, 0));
         titlePanel.setBackground(Constants.CJU_MAIN_BLUE);
 
         JLabel titleLabel = new JLabel(Constants.NOTICE_TITLE, SwingConstants.LEFT);
@@ -89,8 +81,9 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
      * @see <a href="https://chat.openai.com">JLabel 자동 줄바꿈 참고2</a>
      */
     private void createNoticePanel() {
-        JPanel noticeListPanel = new JPanel(new GridLayout(0, 1, 10, 10));
-        noticeListPanel.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5));
+        JPanel noticeListPanel = new JPanel();
+        noticeListPanel.setLayout(new BoxLayout(noticeListPanel, BoxLayout.Y_AXIS));
+        noticeListPanel.setBorder(BorderFactory.createEmptyBorder(3, 8, 8, 8));
         noticeListPanel.setBackground(Constants.CJU_PANEL_BACKGROUND);
 
         noticeScrollPane = new JScrollPane(noticeListPanel);
@@ -112,33 +105,24 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
             noticeBorderPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
             noticeBorderPanel.setBackground(Constants.CJU_CONTENT_BACKGROUND);
 
-            JPanel noticePanel = new JPanel(new GridBagLayout());
+            JPanel noticePanel = new JPanel(new BorderLayout());
             noticePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
             noticePanel.setBackground(Constants.CJU_CONTENT_BACKGROUND);
-
-            GridBagConstraints gbc = new GridBagConstraints();
-            gbc.fill = GridBagConstraints.BOTH;
 
             // 공지 제목 생성 및 설정
             JLabel noticeTitle = new JLabel(notice[0]);
             noticeTitle.setFont(new Font(Constants.FONT, Font.BOLD, 14));
             noticeTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 5));
-
-            gbc.weightx = 1;
-            gbc.weighty = 0.2;
-            gbc.gridy = 0;
-            noticePanel.add(noticeTitle, gbc);
+            noticePanel.add(noticeTitle, BorderLayout.NORTH);
 
             // 공지 내용 생성 및 설정
             String htmlContent = "<html><style>div { width: 250px; word-wrap: break-word; white-space: normal; }</style><div>" + notice[1] + "</div></html>";
             JLabel noticeContents = new JLabel(htmlContent);
             noticeContents.setFont(new Font(Constants.FONT, Font.PLAIN, 13));
-            gbc.weightx = 1;
-            gbc.weighty = 0.8;
-            gbc.gridy = 1;
-            noticePanel.add(noticeContents, gbc);
+            noticePanel.add(noticeContents, BorderLayout.CENTER);
 
             noticeBorderPanel.add(noticePanel);
+            noticeListPanel.add(Box.createRigidArea(new Dimension(0, 5)));
             noticeListPanel.add(noticeBorderPanel);
         }
     }
