@@ -91,9 +91,11 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
     private void createNoticePanel() {
         JPanel noticeListPanel = new JPanel(new GridLayout(0, 1, 10, 10));
         noticeListPanel.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 5));
+        noticeListPanel.setBackground(Constants.CJU_PANEL_BACKGROUND);
 
         noticeScrollPane = new JScrollPane(noticeListPanel);
         noticeScrollPane.setBorder(null);
+        noticeScrollPane.setBackground(Constants.CJU_PANEL_BACKGROUND);
         noticeScrollPane.setHorizontalScrollBar(null);
         noticeScrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
@@ -106,11 +108,13 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
         for (int i = 0; i < notices.size(); i++) {
             String[] notice = notices.get(i);
 
-            RoundedPanel noticeBorderPanel = new RoundedPanel(Color.black, 10);
+            RoundedPanel noticeBorderPanel = new RoundedPanel(Constants.NOTICE_BORDER_COLOR, 10);
             noticeBorderPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
+            noticeBorderPanel.setBackground(Constants.CJU_CONTENT_BACKGROUND);
 
             JPanel noticePanel = new JPanel(new GridBagLayout());
             noticePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            noticePanel.setBackground(Constants.CJU_CONTENT_BACKGROUND);
 
             GridBagConstraints gbc = new GridBagConstraints();
             gbc.fill = GridBagConstraints.BOTH;
