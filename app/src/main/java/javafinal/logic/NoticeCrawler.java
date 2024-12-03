@@ -19,14 +19,15 @@ import java.util.HashMap;
  * @lastModified 2024-11-12
  * 
  * @changelog
- *            <ul>
- *            <li>2024-11-12: 최초 생성</li>
- *            <li>2024-11-12: 결행 공지사항 내용 추출기능 추가</li>
- *            <li>2024-11-12: 결행 게시물 제목 및 내용 추출기능 업데이트</li>
- *            <li>2024-11-12: 추출한 데이터를 이차원 배열에 저장하는 기능 추가</li>
- *            <li>2024-11-19: noticeNum이 '[공지]'인 게시물이 두 개 이상일 때 예외처리</li>
- *            <li>2024-11-19: 이차원 배열 data를 Map으로 변경</li>
- *            </ul>
+ * <ul>
+ * <li>2024-11-12: 최초 생성</li>
+ * <li>2024-11-12: 결행 공지사항 내용 추출기능 추가</li>
+ * <li>2024-11-12: 결행 게시물 제목 및 내용 추출기능 업데이트</li>
+ * <li>2024-11-12: 추출한 데이터를 이차원 배열에 저장하는 기능 추가</li>
+ * <li>2024-11-19: noticeNum이 '[공지]'인 게시물이 두 개 이상일 때 예외처리</li>
+ * <li>2024-11-19: 이차원 배열 data를 Map으로 변경</li>
+ * <li>2024-12-03: 셔틀 결행 공지 내용 JLabel 자동 줄바꿈 이전 설정</li>
+ * </ul>
  */
 public class NoticeCrawler {
     private String homepage = "https://www.cju.ac.kr/www/";
@@ -101,6 +102,9 @@ public class NoticeCrawler {
             Elements contentLines = contents.select(".0");
 
             StringBuilder bld = new StringBuilder();
+
+            bld.append("<html><style>div { width: 250px; word-wrap: break-word; white-space: normal; }</style><div>");
+
             for (Element element : contentLines) {
                 Elements contentTexts = element.select("span");
 
@@ -109,6 +113,9 @@ public class NoticeCrawler {
                 }
                 bld.append("<br>");
             }
+
+            bld.append("</div></html>");
+
             notice = bld.toString();
         } catch (IOException e) {
             e.printStackTrace();
