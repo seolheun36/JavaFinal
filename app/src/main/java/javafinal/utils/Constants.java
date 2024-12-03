@@ -35,4 +35,7 @@ public class Constants {
     // 색상
     public static final Color CJU_MAIN_BLUE = new Color(0x2d4b7a);
     public static final Color CLEAR_COLOR = new Color(0, 0, 0, 0);
+    public static final Color CJU_PANEL_BACKGROUND = new Color(0xe7ecf2);
+    public static final Color CJU_CONTENT_BACKGROUND = new Color(0xffffff);
+    public static final Color NOTICE_BORDER_COLOR = new Color(0xdddddd);
 }
