@@ -3,6 +3,7 @@ package javafinal.ui;
 import javafinal.logic.NoticeCrawler;
 import javafinal.utils.Constants;
 import javafinal.utils.CustomScrollBarUI;
+import javafinal.utils.RoundedPanel;
 
 import java.awt.*;
 import java.util.Map;
@@ -105,8 +106,8 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
         for (int i = 0; i < notices.size(); i++) {
             String[] notice = notices.get(i);
 
-            JPanel noticeBorderPanel = new JPanel();
-            noticeBorderPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+            RoundedPanel noticeBorderPanel = new RoundedPanel(Color.black, 10);
+            noticeBorderPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 
             JPanel noticePanel = new JPanel(new GridBagLayout());
             noticePanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
