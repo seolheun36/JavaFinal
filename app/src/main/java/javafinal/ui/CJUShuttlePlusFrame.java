@@ -30,7 +30,7 @@ public class CJUShuttlePlusFrame extends JFrame {
         setSize(400, 700);
         setLocationRelativeTo(null);
 
-        Image icon = new ImageIcon(getClass().getResource("../resources/icon/busIcon.png")).getImage();
+        Image icon = new ImageIcon(getClass().getClassLoader().getResource("icon/busIcon.png")).getImage();
         setIconImage(icon);
 
         CJUShuttlePlusNoticePanel noticePanel = new CJUShuttlePlusNoticePanel();
