@@ -1,6 +1,7 @@
 package javafinal.ui;
 
 import javafinal.logic.ManagementCSV;
+import javafinal.logic.NoticeCrawler;
 import javafinal.utils.Constants;
 import javafinal.utils.CustomScrollBarUI;
 import javafinal.utils.RoundedPanel;
@@ -99,6 +100,7 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
         noticeScrollBar.setUI(new CustomScrollBarUI());
         noticeScrollBar.setUnitIncrement(15);
 
+        new NoticeCrawler().noticeListCrawler();
         Map<Integer, String[]> notices = new ManagementCSV().createHashMap();
         for (int i = 0; i < notices.size(); i++) {
             String[] notice = notices.get(i);
