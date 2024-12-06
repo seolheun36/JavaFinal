@@ -17,7 +17,7 @@ import java.util.HashMap;
  * @author seolheun5 (김은성, piberius5@gmail.com)
  * 
  * @create 2024-11-12
- * @lastModified 2024-12-03
+ * @lastModified 2024-12-06
  * 
  * @changelog
  * <ul>
@@ -29,6 +29,7 @@ import java.util.HashMap;
  * <li>2024-11-19: 이차원 배열 data를 Map으로 변경</li>
  * <li>2024-12-03: 셔틀 결행 공지 내용 JLabel 자동 줄바꿈 이전 설정</li>
  * <li>2024-12-03: 크롤링 내용 전달 타입 변경</li>
+ * <li>2024-12-06: 크롤링 내용 CSV로 저장 및 송신</li>
  * </ul>
  */
 public class NoticeCrawler {
@@ -39,7 +40,7 @@ public class NoticeCrawler {
      * 
      * @author seolheun5
      */
-    public Map<Integer, ArrayList<String>> noticeListCrawler() {
+    public void noticeListCrawler() {
         // 공지사항 사이트에서 '결행'을 검색했을 때 homepage url 이후 url과 homepage url을 합치는 코드
         String noticeListURL = homepage + "selectBbsNttList.do?key=4577&bbsNo=881&searchCnd=SJ&searchKrwd=결행";
 
@@ -78,7 +79,6 @@ public class NoticeCrawler {
         }
 
         new ManagementCSV().writeCSV(noticeData);
-        return noticeData;
     }
 
     /**

@@ -1,12 +1,11 @@
 package javafinal.ui;
 
-import javafinal.logic.NoticeCrawler;
+import javafinal.logic.ManagementCSV;
 import javafinal.utils.Constants;
 import javafinal.utils.CustomScrollBarUI;
 import javafinal.utils.RoundedPanel;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Map;
 
 import javax.swing.*;
@@ -17,7 +16,7 @@ import javax.swing.*;
  * @author seolheun5 (김은성, piberius5@gmail.com)
  * 
  * @create 2024-11-13
- * @lastModified 2024-12-03
+ * @lastModified 2024-12-06
  * 
  * @changelog
  * <ul>
@@ -31,6 +30,7 @@ import javax.swing.*;
  * <li>2024-12-03: 타이틀 및 내용, 내용 패널에서의 타이틀과 내용, 각 내용 패널 사이의 레이아웃 수정</li>
  * <li>2024-12-03: 셔틀 결행 공지 내용 JLabel 자동 줄바꿈 기능 크롤러로 이전</li>
  * <li>2024-12-03: 크롤링 내용 전달 타입 변경에 따른 수정</li>
+ * <li>2024-12-06: 크롤링 내용을 CSV 파일로 수신</li>
  * </ul>
  */
 public class CJUShuttlePlusNoticePanel extends JPanel {
@@ -99,10 +99,9 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
         noticeScrollBar.setUI(new CustomScrollBarUI());
         noticeScrollBar.setUnitIncrement(15);
 
-        NoticeCrawler nc = new NoticeCrawler();
-        Map<Integer, ArrayList<String>> notices = nc.noticeListCrawler();
+        Map<Integer, String[]> notices = new ManagementCSV().createHashMap();
         for (int i = 0; i < notices.size(); i++) {
-            ArrayList<String> notice = notices.get(i);
+            String[] notice = notices.get(i);
 
             RoundedPanel noticeBorderPanel = new RoundedPanel(Constants.NOTICE_BORDER_COLOR, 10);
             noticeBorderPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
@@ -113,13 +112,13 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
             noticePanel.setBackground(Constants.CJU_CONTENT_BACKGROUND);
 
             // 공지 제목 생성 및 설정
-            JLabel noticeTitle = new JLabel(notice.get(0));
+            JLabel noticeTitle = new JLabel(notice[0]);
             noticeTitle.setFont(new Font(Constants.FONT, Font.BOLD, 14));
             noticeTitle.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 5));
             noticePanel.add(noticeTitle, BorderLayout.NORTH);
 
             // 공지 내용 생성 및 설정
-            String htmlContent = notice.get(1);
+            String htmlContent = notice[1];
             JLabel noticeContents = new JLabel(htmlContent);
             noticeContents.setFont(new Font(Constants.FONT, Font.PLAIN, 13));
             noticePanel.add(noticeContents, BorderLayout.CENTER);
