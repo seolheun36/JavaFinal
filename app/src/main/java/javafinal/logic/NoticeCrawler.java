@@ -77,6 +77,7 @@ public class NoticeCrawler {
             e.printStackTrace();
         }
 
+        new ManagementCSV().writeCSV(noticeData);
         return noticeData;
     }
 
