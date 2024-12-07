@@ -20,8 +20,6 @@ public class Main {
     /**
      * {@cdoe main} 메서드
      * 
-     * @author seolheun5
-     * 
      * @param args
      */
     public static void main(String[] args) {

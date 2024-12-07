@@ -1,4 +1,4 @@
-package javafinal.logic;
+package javafinal.utils;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -50,7 +50,7 @@ public class ManagementCSV {
                 text.append((char) c);
             }
         } catch (IOException e) {
-            System.out.println(e);
+            e.printStackTrace();
         }
 
         return text.toString();
@@ -59,9 +59,9 @@ public class ManagementCSV {
     /**
      * {@code writeCSV} 메서드는 HashMap 데이터를 받아 CSV 파일로 작성하는 메서드입니다.
      * 
-     * @param hashMap 공지 제목과 내용을 담고 있는 
+     * @param hashMap 공지 ID를 키로, 공지 제목과 내용을 값으로 가지는 HashMap 타입의 매개변수
      */
-    protected void writeCSV(Map<Integer, ArrayList<String>> hashMap) {
+    public void writeCSV(Map<Integer, ArrayList<String>> hashMap) {
         String output = "./app/src/main/resources/data/notice.csv";
 
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(output, false), StandardCharsets.UTF_8))) {

@@ -24,6 +24,10 @@ import javax.swing.JFrame;
  * @see <a href="https://www.flaticon.com/uicons">Flaticon</a>의 UIcon
  */
 public class CJUShuttlePlusFrame extends JFrame {
+
+    /**
+     * {@code CJUShuttlePlusFrame} 생성자는 앱 프레임의 기본적인 설정을 구성하는 생성자입니다.
+     */
     public CJUShuttlePlusFrame() {
         setTitle("청주대학교 셔틀+");
         setDefaultCloseOperation(EXIT_ON_CLOSE);

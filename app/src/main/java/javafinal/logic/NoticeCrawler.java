@@ -1,5 +1,7 @@
 package javafinal.logic;
 
+import javafinal.utils.ManagementCSV;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -37,8 +39,6 @@ public class NoticeCrawler {
 
     /**
      * {@code noticeListCrawler} 메서드는 셔틀 결행 공지사항 리스트를 순회하며 리스트 기본 정보를 크롤링하는 메서드입니다.
-     * 
-     * @author seolheun5
      */
     public void noticeListCrawler() {
         // 공지사항 사이트에서 '결행'을 검색했을 때 homepage url 이후 url과 homepage url을 합치는 코드
@@ -84,10 +84,7 @@ public class NoticeCrawler {
     /**
      * {@code contentsCrawler} 메서드는 각 공지 내용을 크롤링하는 메서드입니다.
      * 
-     * @author seolheun5
-     * 
-     * @param noticeSubjects 각 공지 내용 중 {@code class="subject"}인 요소를 담은
-     *                     {@code Elements} 타입 자료
+     * @param noticeSubjects 각 공지 내용 중 {@code class="subject"}인 요소를 담은 {@code Elements} 타입 자료
      * @return 공지 내용을 String 타입으로 반환
      */
     private String contentsCrawler(Elements noticeSubjects) {

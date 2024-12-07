@@ -1,9 +1,9 @@
 package javafinal.ui;
 
-import javafinal.logic.ManagementCSV;
 import javafinal.logic.NoticeCrawler;
 import javafinal.utils.Constants;
 import javafinal.utils.CustomScrollBarUI;
+import javafinal.utils.ManagementCSV;
 import javafinal.utils.RoundedPanel;
 
 import java.awt.*;
@@ -40,8 +40,6 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
 
     /**
      * {@code CJUShuttlePlusNoticePanel} 패널의 생성자로 패널의 큰 틀을 설정한다.
-     * 
-     * @author seolheun5
      */
     protected CJUShuttlePlusNoticePanel() {
         setLayout(new BorderLayout());
@@ -59,8 +57,6 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
 
     /**
      * {@code createTitlePanel} 메서드는 Title Panel을 설정하고 추가하는 메서드입니다.
-     * 
-     * @author seolheun5
      */
     private void createTitlePanel() {
         titlePanel = new JPanel(new BorderLayout());
@@ -77,8 +73,6 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
 
     /**
      * {@code createNoticePanel} 메서드는 공지 내용인 Notice Panel을 설정하고 추가하는 메서드입니다.
-     * 
-     * @author seolheun5
      * 
      * @see <a href="https://heaven0713.tistory.com/28">JLabel 개행 처리 참고</a>
      * @see <a href="https://www.php.cn/ko/faq/1796691556.html">JLabel 자동 줄바꿈 참고1</a>
