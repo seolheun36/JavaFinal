@@ -18,7 +18,7 @@ import javafinal.ui.CJUShuttlePlusFrame;
 public class Main {
 
     /**
-     * {@cdoe main} 메서드
+     * {@code Main} 메서드
      * 
      * @param args
      */
