@@ -21,7 +21,7 @@ package logic {
     class NoticeCrawler {
     + NoticeCrawler(): 
     - homepage: String
-    + noticeListCrawler(): void
+    - noticeListCrawler(): void
     - contentsCrawler(Elements): String
     }
 }
