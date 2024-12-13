@@ -37,10 +37,15 @@ import java.util.HashMap;
 public class NoticeCrawler {
     private String homepage = "https://www.cju.ac.kr/www/";
 
+    /** */
+    public NoticeCrawler() {
+        noticeListCrawler();
+    }
+
     /**
      * {@code noticeListCrawler} 메서드는 셔틀 결행 공지사항 리스트를 순회하며 리스트 기본 정보를 크롤링하는 메서드입니다.
      */
-    public void noticeListCrawler() {
+    private void noticeListCrawler() {
         // 공지사항 사이트에서 '결행'을 검색했을 때 homepage url 이후 url과 homepage url을 합치는 코드
         String noticeListURL = homepage + "selectBbsNttList.do?key=4577&bbsNo=881&searchCnd=SJ&searchKrwd=결행";
 

@@ -94,7 +94,7 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
         noticeScrollBar.setUI(new CustomScrollBarUI());
         noticeScrollBar.setUnitIncrement(15);
 
-        new NoticeCrawler().noticeListCrawler();
+        new NoticeCrawler();
         Map<Integer, String[]> notices = new ManagementCSV().createHashMap();
         for (int i = 0; i < notices.size(); i++) {
             String[] notice = notices.get(i);
