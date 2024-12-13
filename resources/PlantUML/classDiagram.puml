@@ -1,4 +1,8 @@
-@startuml classDiagram
+@startuml class
+
+top to bottom direction
+skinparam linetype ortho
+
 package javax.swing {
     class JFrame <<library>>
     class JPanel <<library>>
@@ -9,69 +13,78 @@ package javax.swing {
 }
 
 class Main {
-    + main : void
+  + Main(): 
+  + main(String[]): void
 }
 
 package logic {
     class NoticeCrawler {
-        - homepage : String
-
-        + noticeListCrawler() : void
-        - contentsCrawler(noticeSubjects : Elements) : String
+    + NoticeCrawler(): 
+    - homepage: String
+    + noticeListCrawler(): void
+    - contentsCrawler(Elements): String
     }
 }
 
 package ui {
     class CJUShuttlePlusFrame extends javax.swing.JFrame {
-        + CJUShuttlePlusFrame()
+        + CJUShuttlePlusFrame(): 
     }
 
     class CJUShuttlePlusNoticePanel extends javax.swing.JPanel {
-        - titlePanel : JPanel
-        - noticeScrollPane : JScrollPane
-
-        # CJUShuttlePlusNoticePanel()
-        - createTitlePanel() : void
-        - createNoticePanel() : void
+        # CJUShuttlePlusNoticePanel(): 
+        - noticeScrollPane: JScrollPane
+        - titlePanel: JPanel
+        - createTitlePanel(): void
+        - createNoticePanel(): void
     }
 }
 
 package utils {
     class Constants {
-        + FONT : String
-        + NOTICE_TITLE : String
-        + CJU_MAIN_BLUE : Color
-        + CLEAR_COLOR : Color
-        + CJU_PANEL_BACKGROUND : Color
-        + CJU_CONTENT_BACKGROUND : Color
-        + NOTICE_BORDER_COLOR : Color
-
-        - Constants()
+        - Constants(): 
+        + FONT: String
+        + CLEAR_COLOR: Color
+        + CJU_MAIN_BLUE: Color
+        + NOTICE_BORDER_COLOR: Color
+        + NOTICE_TITLE: String
+        + CJU_CONTENT_BACKGROUND: Color
+        + CJU_PANEL_BACKGROUND: Color
     }
 
     class CustomScrollBarUI extends javax.swing.plaf.basic.BasicScrollBarUI {
-        # createDecreaseButton() : JButton
-        # createIncreaseButton() : JButton
-        - createInvisibleButton() : JButton
-        # paintThumb() : void
-        + getPreferredSize(c : JComponent) : Dimension
-        # paintTrack(g : Graphics, c : JComponent, trackBounds : Rectangle) : void
-        # getTrackBounds() : Rectangle
+        + CustomScrollBarUI(): 
+        # paintThumb(Graphics, JComponent, Rectangle): void
+        + getPreferredSize(JComponent): Dimension
+        # getTrackBounds(): Rectangle
+        # createIncreaseButton(int): JButton
+        # createDecreaseButton(int): JButton
+        # paintTrack(Graphics, JComponent, Rectangle): void
+        - createInvisibleButton(): JButton
     }
 
     class ManagementCSV {
-        - readCSV() : String
-        + writeCSV(hashMap : Map<Integer, ArrayList<String>>) : void
-        + createHashMap() : Map<Integer, String[]>
+        + ManagementCSV(): 
+        - readCSV(): String
+        + createHashMap(): Map<Integer, String[]>
+        + writeCSV(Map<Integer, ArrayList<String>>): void
     }
 
     class RoundedPanel extends javax.swing.JPanel {
-        - color : Color
-        - radius : int
-
-        + RoundedPanel(color : Color, radius : int)
-        # paintComponent(g : Graphics) : void
-        # paintBorder(g : Graphics) : void
+        + RoundedPanel(Color, int): 
+        - color: Color
+        - radius: int
+        # paintBorder(Graphics): void
+        # paintComponent(Graphics): void
     }
 }
+
+CJUShuttlePlusFrame        -[#595959,dashed]->  CJUShuttlePlusNoticePanel : "«create»"
+CJUShuttlePlusNoticePanel  -[#595959,dashed]->  CustomScrollBarUI         : "«create»"
+CJUShuttlePlusNoticePanel  -[#595959,dashed]->  ManagementCSV             : "«create»"
+CJUShuttlePlusNoticePanel  -[#595959,dashed]->  NoticeCrawler             : "«create»"
+CJUShuttlePlusNoticePanel  -[#595959,dashed]->  RoundedPanel              : "«create»"
+Main                       -[#595959,dashed]->  CJUShuttlePlusFrame       : "«create»"
+NoticeCrawler              -[#595959,dashed]->  ManagementCSV             : "«create»"
+
 @enduml
