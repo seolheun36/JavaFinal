@@ -4,8 +4,9 @@
 # Ignore Gradle build output directory
 build
 
-# Ignore Visual Studio Code setting directory
+# Ignore IDE setting directory
 .vscode
+.idea
 
 # Ignore data file
 /src/main/java/javafinal/resources/data/notice.csv
