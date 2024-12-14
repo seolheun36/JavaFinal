@@ -84,11 +84,11 @@ public class NoticeCrawler {
 
                 i++;
             }
+
+            new ManagementCSV().writeCSV(noticeData);
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        new ManagementCSV().writeCSV(noticeData);
     }
 
     /**
