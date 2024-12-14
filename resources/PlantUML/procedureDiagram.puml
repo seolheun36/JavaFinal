@@ -1,0 +1,53 @@
+@startuml procedure
+
+start
+:Main 클래스 실행;
+
+:CJUShuttlePlusFrame 생성;
+:CJUShuttlePlusNoticePanel 추가;
+
+partition "NoticeCrawler" {
+    :공지사항 목록 URL 생성;
+    :HTTP GET 요청으로 공지사항 HTML 문서 가져오기;
+
+    if (응답 성공?) then (true)
+        :HTML 문서를 파싱하여 공지사항 데이터 추출;
+        :HTML 데이터 가공 (hashMap 타입);
+
+        :ManagementCSV.writeCSV()로 hashMap 데이터 전달 및 호출;
+        partition "ManagementCSV.writeCSV()" {
+            if (쓰기 성공) then (true)
+                :notice.csv 파일에 내용 저장;
+            else (false)
+                :오류 출력 (예외 처리);
+                :내용을 업데이트 하지 않음;
+            endif
+        }
+
+    else (false)
+        :오류 출력(예외 처리);
+    endif
+
+    partition "ManagementCSV.createHashMap()" {
+        :내용 생성을 위한 ManagementCSV.createHashMap() 호출;
+        :createHashMap() 내부에서 readCSV() 호출;
+        partition "ManagementCSV.readCSV()" {
+            if (읽기 성공) then (true)
+                :CSV를 메모리에 로드;
+                if (notice.csv에 내용이 있는가?) then (true)
+                    :저장된 내용을 패널에 추가 후 패널 표시;
+                else (false)
+                    :내용이 비어있는 패널 표시;
+                endif
+            else (false)
+                :오류 출력(예외 처리);
+                :내용이 비어있는 패널 표시;
+            endif
+        }
+    }
+}
+
+:사용자가 프로그램을 종료할 때까지 대기;
+:프로그램 종료;
+stop
+@enduml
