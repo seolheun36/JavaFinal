@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 /**
- * {@code ManagementCSV} 클래스는 CSV를 읽고 쓰는 기능을 관리하는 클래스입니다.
+ * CSV 파일의 읽기, 쓰기 및 해시맵 생성을 담당하는 유틸리티 클래스입니다.
  * 
  * @author seolheun5 (김은성, piberius5@gmail.com)
  * 
@@ -32,9 +32,10 @@ import java.util.StringTokenizer;
  */
 public class ManagementCSV {
     /**
-     * {@code readCSV} 메서드는 CSV를 읽어 리스트 형태로 반환해주는 메서드입니다.
+     * CSV 파일을 읽어 문자열로 반환합니다.
      * 
-     * @return CSV 파일을 읽어 String 타입으로 반환
+     * @return CSV 파일의 내용을 문자열로 반환합니다.</br>
+     *         파일을 읽는 중 오류가 발생하면 빈 문자열을 반환합니다.
      */
     private String readCSV() {
         String input = "./app/src/main/resources/data/notice.csv";
@@ -57,9 +58,10 @@ public class ManagementCSV {
     }
 
     /**
-     * {@code writeCSV} 메서드는 HashMap 데이터를 받아 CSV 파일로 작성하는 메서드입니다.
+     * 주어진 해시맵 데이터를 CSV 파일에 저장합니다.
      * 
-     * @param hashMap 공지 ID를 키로, 공지 제목과 내용을 값으로 가지는 HashMap 타입의 매개변수
+     * @param hashMap 공지 제목과 내용을 포함한 데이터가 저장된 해시맵입니다.</br>
+     *                키는 정수형 인덱스이며, 값은 공지 제목과 내용을 포함한 문자열 리스트입니다.
      */
     public void writeCSV(Map<Integer, ArrayList<String>> hashMap) {
         String output = "./app/src/main/resources/data/notice.csv";
@@ -87,9 +89,10 @@ public class ManagementCSV {
     }
 
     /**
-     * {@code createHashMap} 메서드는 String으로 불러온 CSV 파일 내용을 HashMap으로 변경하여 반환하는 메서드입니다.
+     * CSV 파일의 데이터를 해시맵 형태로 변환합니다.
      * 
-     * @return CSV 파일 내용을 정제하여 HashMap 타입으로 반환
+     * @return CSV 데이터를 기반으로 생성된 해시맵을 반환합니다.</br>
+     *         키는 정수형 인덱스이며, 값은 공지 제목과 내용을 포함한 문자열 배열입니다.
      */
     public Map<Integer, String[]> createHashMap() {
         StringTokenizer st = new StringTokenizer(readCSV(), "\r\n");

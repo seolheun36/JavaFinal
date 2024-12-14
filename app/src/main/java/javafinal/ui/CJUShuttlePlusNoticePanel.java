@@ -12,7 +12,8 @@ import java.util.Map;
 import javax.swing.*;
 
 /**
- * {@code CJUShuttlePlusNoticePanel} 클래스는 셔틀 결행 공지 부분 패널에 대한 설정 클래스입니다.
+ * {@code CJUShuttlePlusNoticePanel} 클래스는 셔틀 공지사항을 표시하는 사용자 인터페이스 패널을 제공합니다. </br>
+ * 공지사항 리스트와 제목을 포함하여 셔틀 공지사항을 구성합니다.
  * 
  * @author seolheun5 (김은성, piberius5@gmail.com)
  * 
@@ -39,7 +40,8 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
     private JScrollPane noticeScrollPane;
 
     /**
-     * {@code CJUShuttlePlusNoticePanel} 패널의 생성자로 패널의 큰 틀을 설정한다.
+     * {@code CJUShuttlePlusNoticePanel} 클래스의 생성자. </br>
+     * 패널의 기본 레이아웃을 설정하고, 제목 패널 및 공지사항 패널을 초기화합니다.
      */
     protected CJUShuttlePlusNoticePanel() {
         setLayout(new BorderLayout());
@@ -56,7 +58,8 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
     }
 
     /**
-     * {@code createTitlePanel} 메서드는 Title Panel을 설정하고 추가하는 메서드입니다.
+     * 제목 패널을 생성하고 초기화합니다. </br>
+     * 제목은 "셔틀 결행 공지"로 설정되며, 기본 스타일이 적용됩니다.
      */
     private void createTitlePanel() {
         titlePanel = new JPanel(new BorderLayout());
@@ -72,7 +75,9 @@ public class CJUShuttlePlusNoticePanel extends JPanel {
     }
 
     /**
-     * {@code createNoticePanel} 메서드는 공지 내용인 Notice Panel을 설정하고 추가하는 메서드입니다.
+     * 공지사항 패널을 생성하고 초기화합니다. </br>
+     * 공지사항은 CSV 파일로부터 읽어오며, 각가의 공지를 패널로 생성하여 리스트에 추가합니다. </br>
+     * 또한, 스크롤바 사용자 인터페이스를 사용자 정의합니다.
      * 
      * @see <a href="https://heaven0713.tistory.com/28">JLabel 개행 처리 참고</a>
      * @see <a href="https://www.php.cn/ko/faq/1796691556.html">JLabel 자동 줄바꿈 참고1</a>

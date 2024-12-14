@@ -3,7 +3,8 @@ package javafinal;
 import javafinal.ui.CJUShuttlePlusFrame;
 
 /**
- * {@code Main} 클래스
+ * 프로그램의 진입점 클래스입니다.</br>
+ * {@code CJUShuttlePlusFrame}을 생성하여 사용자 인터페이스를 초기화합니다.
  * 
  * @author seolheun5 (김은성, piberius5@gmail.com)
  * 
@@ -18,9 +19,9 @@ import javafinal.ui.CJUShuttlePlusFrame;
 public class Main {
 
     /**
-     * {@code Main} 메서드
+     * {@code main} 메서드로, 프로그램 실행 시작점입니다.
      * 
-     * @param args
+     * @param args 실행 시 전달되는 명령행 인수
      */
     public static void main(String[] args) {
         new CJUShuttlePlusFrame();

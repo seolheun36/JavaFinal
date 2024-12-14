@@ -14,7 +14,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * {@code NoticeCrawler} 클래스
+ * 공지사항 크롤링 기능을 제공하는 클래스입니다. </br>
+ * 청주대학교의 셔틀버스 결행 관련 공지사항을 크롤링하고 CSV 파일로 저장합니다.
  * 
  * @author seolheun5 (김은성, piberius5@gmail.com)
  * 
@@ -37,13 +38,17 @@ import java.util.HashMap;
 public class NoticeCrawler {
     private String homepage = "https://www.cju.ac.kr/www/";
 
-    /** */
+    /**
+     * {@code NoticeCrawler} 의 기본 생성자입니다. </br>
+     * 생성 시 자동으로 공지사항 크롤링 작업을 수행합니다.
+     */
     public NoticeCrawler() {
         noticeListCrawler();
     }
 
     /**
-     * {@code noticeListCrawler} 메서드는 셔틀 결행 공지사항 리스트를 순회하며 리스트 기본 정보를 크롤링하는 메서드입니다.
+     * 공지사항 목록을 크롤링하는 메서드입니다. </br>
+     * 셔틀버스 결행 관련 공지사항을 청주대학교 홈페이지에서 가져와 가공한 후, {@link ManagementCSV#writeCSV(Map)}을 사용해 CSV 파일로 저장합니다.
      */
     private void noticeListCrawler() {
         // 공지사항 사이트에서 '결행'을 검색했을 때 homepage url 이후 url과 homepage url을 합치는 코드
@@ -87,10 +92,10 @@ public class NoticeCrawler {
     }
 
     /**
-     * {@code contentsCrawler} 메서드는 각 공지 내용을 크롤링하는 메서드입니다.
+     * 특정 공지사항의 내용을 크롤링하는 메서드입니다.
      * 
-     * @param noticeSubjects 각 공지 내용 중 {@code class="subject"}인 요소를 담은 {@code Elements} 타입 자료
-     * @return 공지 내용을 String 타입으로 반환
+     * @param noticeSubjects 공지사항 제목과 관련된 HTML 요소
+     * @return 크롤링된 공지사항의 세부 내용 (HTML 형식)
      */
     private String contentsCrawler(Elements noticeSubjects) {
         Elements contentLinks = noticeSubjects.select("a");

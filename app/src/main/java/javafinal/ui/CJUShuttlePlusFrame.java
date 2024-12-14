@@ -6,9 +6,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
- * {@code CJUShuttlePlusFrame} 클래스는 앱의 패널들을 관리해주는 프레임입니다.
+ * 청주대학교 셔틀+ 프로그램의 메인 프레임을 구성하는 클래스입니다. </br>
+ * 이 클래스는 프로그램의 최상위 창을 생성하며, 공지사항 패널을 포함합니다.
  * 
- * @author seolheun5
+ * @author seolheun5 (김은성, piberius5@gmail.com)
  * 
  * @create 2024-11-13
  * @lastModified 2024-12-03
@@ -26,7 +27,15 @@ import javax.swing.JFrame;
 public class CJUShuttlePlusFrame extends JFrame {
 
     /**
-     * {@code CJUShuttlePlusFrame} 생성자는 앱 프레임의 기본적인 설정을 구성하는 생성자입니다.
+     * {@code CJUShuttlePlusFrame}의 생성자입니다. </br>
+     * 프로그램의 메인 프레임을 초기화하고 기본 설정을 적용합니다.
+     * <ul>
+     *     <li>창 제목: "청주대학교 셔틀+"</li>
+     *     <li>창 크기: 400x700 픽셀</li>
+     *     <li>화면 중앙에 창 배치</li>
+     *     <li>아이콘 이미지 설정</li>
+     *     <li>{@link CJUShuttlePlusNoticePanel} 추가</li>
+     * </ul>
      */
     public CJUShuttlePlusFrame() {
         setTitle("청주대학교 셔틀+");
