@@ -101,7 +101,15 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">CustomScrollBarUI</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html" title="class or interface in javax.swing.plaf.basic" class="external-link">BasicScrollBarUI</a></span></div>
-<div class="block"><code>CustomScrollBarUI</code> 클래스는 스크롤바의 커스텀 디자인을 설정하는 클래스입니다.</div>
+<div class="block"><code>CustomScrollBarUI</code> 클래스는 스크롤바의 사용자 지정 UI를 제공하며, 스크롤바의 버튼과 트랙, thumb의 외형을 변경합니다.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="tag-list">
+<li><a href="https://chat.openai.com">커스텀 스크롤바 참고</a></li>
+</ul>
+</dd>
+</dl>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -152,26 +160,44 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JButton.html" title="class or interface in javax.swing" class="external-link">JButton</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createDecreaseButton(int)" class="member-name-link">createDecreaseButton</a><wbr>(int&nbsp;orientation)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">스크롤바 감소 버튼을 생성합니다.</br>
+ 이 메서드는 감소 버튼을 숨기기 위해 사용됩니다.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JButton.html" title="class or interface in javax.swing" class="external-link">JButton</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#createIncreaseButton(int)" class="member-name-link">createIncreaseButton</a><wbr>(int&nbsp;orientation)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">스크롤바 증가 버튼을 생성합니다.</br>
+ 이 메서드는 증가 버튼을 숨기기 위해 사용됩니다.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Dimension.html" title="class or interface in java.awt" class="external-link">Dimension</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPreferredSize(javax.swing.JComponent)" class="member-name-link">getPreferredSize</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JComponent.html" title="class or interface in javax.swing" class="external-link">JComponent</a>&nbsp;c)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">스크롤바의 선호 크기를 반환합니다.</br>
+ 가로 또는 세로 방향에 따라 스크롤바의 두께를 설정합니다.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Rectangle.html" title="class or interface in java.awt" class="external-link">Rectangle</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getTrackBounds()" class="member-name-link">getTrackBounds</a>()</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">스크롤바 트랙의 위치와 크기를 반환합니다.</br>
+ 트랙의 높이와 너비를 직접 수정하여 크기를 변경합니다.</div>
+</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#paintThumb(java.awt.Graphics,javax.swing.JComponent,java.awt.Rectangle)" class="member-name-link">paintThumb</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Graphics.html" title="class or interface in java.awt" class="external-link">Graphics</a>&nbsp;g,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JComponent.html" title="class or interface in javax.swing" class="external-link">JComponent</a>&nbsp;c,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Rectangle.html" title="class or interface in java.awt" class="external-link">Rectangle</a>&nbsp;thumbBounds)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">스크롤바의 thumb을 그립니다.</br>
+ thumb은 밝은 회색으로 채워진 둥근 사각형 형태로 그려집니다.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#paintTrack(java.awt.Graphics,javax.swing.JComponent,java.awt.Rectangle)" class="member-name-link">paintTrack</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Graphics.html" title="class or interface in java.awt" class="external-link">Graphics</a>&nbsp;g,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JComponent.html" title="class or interface in javax.swing" class="external-link">JComponent</a>&nbsp;c,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Rectangle.html" title="class or interface in java.awt" class="external-link">Rectangle</a>&nbsp;trackBounds)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">스크롤바 트랙을 그립니다.&gt;/br&gt;
+ 트랙은 <a href="Constants.html#CLEAR_COLOR"><code>Constants.CLEAR_COLOR</code></a> 색상으로 채워집니다.</div>
+</div>
 </div>
 </div>
 </div>
@@ -213,9 +239,15 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createDecreaseButton(int)">
 <h3>createDecreaseButton</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JButton.html" title="class or interface in javax.swing" class="external-link">JButton</a></span>&nbsp;<span class="element-name">createDecreaseButton</span><wbr><span class="parameters">(int&nbsp;orientation)</span></div>
+<div class="block">스크롤바 감소 버튼을 생성합니다.</br>
+ 이 메서드는 감소 버튼을 숨기기 위해 사용됩니다.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html#createDecreaseButton(int)" title="class or interface in javax.swing.plaf.basic" class="external-link">createDecreaseButton</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html" title="class or interface in javax.swing.plaf.basic" class="external-link">BasicScrollBarUI</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>orientation</code> - 버튼의 방향</dd>
+<dt>Returns:</dt>
+<dd>숨겨진 상태의 버튼</dd>
 </dl>
 </section>
 </li>
@@ -223,9 +255,15 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="createIncreaseButton(int)">
 <h3>createIncreaseButton</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JButton.html" title="class or interface in javax.swing" class="external-link">JButton</a></span>&nbsp;<span class="element-name">createIncreaseButton</span><wbr><span class="parameters">(int&nbsp;orientation)</span></div>
+<div class="block">스크롤바 증가 버튼을 생성합니다.</br>
+ 이 메서드는 증가 버튼을 숨기기 위해 사용됩니다.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html#createIncreaseButton(int)" title="class or interface in javax.swing.plaf.basic" class="external-link">createIncreaseButton</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html" title="class or interface in javax.swing.plaf.basic" class="external-link">BasicScrollBarUI</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>orientation</code> - 버튼의 방향</dd>
+<dt>Returns:</dt>
+<dd>숨겨진 상태의 버튼</dd>
 </dl>
 </section>
 </li>
@@ -235,9 +273,15 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">paintThumb</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Graphics.html" title="class or interface in java.awt" class="external-link">Graphics</a>&nbsp;g,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JComponent.html" title="class or interface in javax.swing" class="external-link">JComponent</a>&nbsp;c,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Rectangle.html" title="class or interface in java.awt" class="external-link">Rectangle</a>&nbsp;thumbBounds)</span></div>
+<div class="block">스크롤바의 thumb을 그립니다.</br>
+ thumb은 밝은 회색으로 채워진 둥근 사각형 형태로 그려집니다.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html#paintThumb(java.awt.Graphics,javax.swing.JComponent,java.awt.Rectangle)" title="class or interface in javax.swing.plaf.basic" class="external-link">paintThumb</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html" title="class or interface in javax.swing.plaf.basic" class="external-link">BasicScrollBarUI</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>g</code> - 그래픽 객체</dd>
+<dd><code>c</code> - 컴포넌트</dd>
+<dd><code>thumbBounds</code> - thumb의 위치와 크기 정보</dd>
 </dl>
 </section>
 </li>
@@ -245,9 +289,15 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getPreferredSize(javax.swing.JComponent)">
 <h3>getPreferredSize</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Dimension.html" title="class or interface in java.awt" class="external-link">Dimension</a></span>&nbsp;<span class="element-name">getPreferredSize</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JComponent.html" title="class or interface in javax.swing" class="external-link">JComponent</a>&nbsp;c)</span></div>
+<div class="block">스크롤바의 선호 크기를 반환합니다.</br>
+ 가로 또는 세로 방향에 따라 스크롤바의 두께를 설정합니다.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html#getPreferredSize(javax.swing.JComponent)" title="class or interface in javax.swing.plaf.basic" class="external-link">getPreferredSize</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html" title="class or interface in javax.swing.plaf.basic" class="external-link">BasicScrollBarUI</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>c</code> - 컴포넌트</dd>
+<dt>Returns:</dt>
+<dd>스크롤바의 선호 크기</dd>
 </dl>
 </section>
 </li>
@@ -257,9 +307,15 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">paintTrack</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Graphics.html" title="class or interface in java.awt" class="external-link">Graphics</a>&nbsp;g,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JComponent.html" title="class or interface in javax.swing" class="external-link">JComponent</a>&nbsp;c,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Rectangle.html" title="class or interface in java.awt" class="external-link">Rectangle</a>&nbsp;trackBounds)</span></div>
+<div class="block">스크롤바 트랙을 그립니다.&gt;/br&gt;
+ 트랙은 <a href="Constants.html#CLEAR_COLOR"><code>Constants.CLEAR_COLOR</code></a> 색상으로 채워집니다.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html#paintTrack(java.awt.Graphics,javax.swing.JComponent,java.awt.Rectangle)" title="class or interface in javax.swing.plaf.basic" class="external-link">paintTrack</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html" title="class or interface in javax.swing.plaf.basic" class="external-link">BasicScrollBarUI</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>g</code> - 그래픽 객체</dd>
+<dd><code>c</code> - 컴포넌트</dd>
+<dd><code>trackBounds</code> - 트랙의 위치와 크기 정보</dd>
 </dl>
 </section>
 </li>
@@ -267,9 +323,13 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="getTrackBounds()">
 <h3>getTrackBounds</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Rectangle.html" title="class or interface in java.awt" class="external-link">Rectangle</a></span>&nbsp;<span class="element-name">getTrackBounds</span>()</div>
+<div class="block">스크롤바 트랙의 위치와 크기를 반환합니다.</br>
+ 트랙의 높이와 너비를 직접 수정하여 크기를 변경합니다.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html#getTrackBounds()" title="class or interface in javax.swing.plaf.basic" class="external-link">getTrackBounds</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/plaf/basic/BasicScrollBarUI.html" title="class or interface in javax.swing.plaf.basic" class="external-link">BasicScrollBarUI</a></code></dd>
+<dt>Returns:</dt>
+<dd>트랙의 위치와 크기 정보</dd>
 </dl>
 </section>
 </li>

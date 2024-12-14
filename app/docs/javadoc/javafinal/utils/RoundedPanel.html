@@ -103,7 +103,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">RoundedPanel</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JPanel.html" title="class or interface in javax.swing" class="external-link">JPanel</a></span></div>
-<div class="block"><code>Rounded Panel</code> 클래스는 둥근 JPanel을 설정하는 클래스입니다.</div>
+<div class="block"><code>RoundedPanel</code> 클래스는 모서리가 둥근 사각형 형태의 GUI 패널을 생성하는 클래스입니다.</br>
+ 이 클래스는 <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JPanel.html" title="class or interface in javax.swing" class="external-link"><code>JPanel</code></a>을 상속하며, 패널의 배경색과 테두리 색상, 그리고 모서리의 반지름을 설정할 수 있습니다.</div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
@@ -159,7 +160,9 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.awt.Color,int)" class="member-name-link">RoundedPanel</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Color.html" title="class or interface in java.awt" class="external-link">Color</a>&nbsp;color,
  int&nbsp;radius)</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">지정된 색상과 반지름을 사용하여 <code>RoundedPanel</code> 인스턴스를 생성합니다.</div>
+</div>
 </div>
 </section>
 </li>
@@ -176,10 +179,14 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#paintBorder(java.awt.Graphics)" class="member-name-link">paintBorder</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Graphics.html" title="class or interface in java.awt" class="external-link">Graphics</a>&nbsp;g)</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">패널의 테두리를 둥근 사각형 형태로 그리는 메서드입니다.</div>
+</div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected void</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#paintComponent(java.awt.Graphics)" class="member-name-link">paintComponent</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Graphics.html" title="class or interface in java.awt" class="external-link">Graphics</a>&nbsp;g)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">&nbsp;</div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">패널의 내부를 둥근 사각형으로 채우는 메서드입니다.</div>
+</div>
 </div>
 </div>
 </div>
@@ -214,6 +221,12 @@ loadScripts(document, 'script');</script>
 <h3>RoundedPanel</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">RoundedPanel</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Color.html" title="class or interface in java.awt" class="external-link">Color</a>&nbsp;color,
  int&nbsp;radius)</span></div>
+<div class="block">지정된 색상과 반지름을 사용하여 <code>RoundedPanel</code> 인스턴스를 생성합니다.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>color</code> - 테두리의 색상</dd>
+<dd><code>radius</code> - 패널 모서리의 반지름</dd>
+</dl>
 </section>
 </li>
 </ul>
@@ -228,9 +241,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="paintComponent(java.awt.Graphics)">
 <h3>paintComponent</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">paintComponent</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Graphics.html" title="class or interface in java.awt" class="external-link">Graphics</a>&nbsp;g)</span></div>
+<div class="block">패널의 내부를 둥근 사각형으로 채우는 메서드입니다.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JComponent.html#paintComponent(java.awt.Graphics)" title="class or interface in javax.swing" class="external-link">paintComponent</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JComponent.html" title="class or interface in javax.swing" class="external-link">JComponent</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>g</code> - 그래픽 컨텍스트 객체</dd>
 </dl>
 </section>
 </li>
@@ -238,9 +254,12 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="paintBorder(java.awt.Graphics)">
 <h3>paintBorder</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">paintBorder</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/java/awt/Graphics.html" title="class or interface in java.awt" class="external-link">Graphics</a>&nbsp;g)</span></div>
+<div class="block">패널의 테두리를 둥근 사각형 형태로 그리는 메서드입니다.</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JComponent.html#paintBorder(java.awt.Graphics)" title="class or interface in javax.swing" class="external-link">paintBorder</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.desktop/javax/swing/JComponent.html" title="class or interface in javax.swing" class="external-link">JComponent</a></code></dd>
+<dt>Parameters:</dt>
+<dd><code>g</code> - 그래픽 컨텍스트 객체</dd>
 </dl>
 </section>
 </li>
